@@ -142,7 +142,51 @@ public class ArraysAndStrings {
         if (res.length() > input.length()) return input;
         else return res.toString();
     }
-
+    public static int[][] rotateMatrix(int[][] image){
+        int N = image.length;
+        int[][] rotated = new int[N][N];
+        for (int i = 0 ; i < N; i++){
+            for (int j = 0 ; j < N; j++){
+                rotated[i][j] = image[j][N-i-1];
+            }
+        }
+       return rotated;
+    }
+    public static int[][] zeroMatrix(int[][] input){
+        int width = input.length;
+        int height = input[0].length;
+        boolean[] isColZero = new boolean[width];
+        boolean[] isRowZero = new boolean[height];
+        for(int i = 0; i < width ; i++){
+            for(int j = 0; j < height; j++){
+                if(input[i][j] == 0){
+                    isColZero[i] = true;
+                    isRowZero[j] = true;
+                }
+            }
+        }
+        for(int i = 0; i < width ; i++){
+            if(isColZero[i]){
+                for(int j = 0; j < height; j++){
+                    input[i][j] = 0;
+                }
+            }
+        }
+        for(int i = 0; i < height; i++){
+            if(isRowZero[i]){
+                for(int j = 0; j < width ;j++){
+                    input[j][i] = 0;
+                }
+            }
+        }
+        return input;
+    }
+    public static boolean isRotation(String S1, String S2){
+        if(S1.length() != S2.length()) return false;
+        if (S1 == null || S2 == null)return false;
+        String control = S1+S1;
+        return control.contains(S2);
+    }
     public static void main(String[] args) {
         //System.out.println(isUnique("hello world"));
         //System.out.println(checkPermutation("h ell o ", "el l ho "));
@@ -150,5 +194,11 @@ public class ArraysAndStrings {
         //System.out.println(isPallindromePerm("Tact Coa"));
         //System.out.println(oneAway("Tact", " Tasd bt    "));
         //System.out.println(compresser("asdfgh"));
+        //int[][] temp =  {{1,2,3},{4,5,6},{7,8,9}};
+        //System.out.println(Arrays.deepToString(temp));
+        //System.out.println(Arrays.deepToString(rotateMatrix(temp)));
+        //int[][] temp =  {{1,2,3},{4,0,6},{7,8,9}};
+        //System.out.println(Arrays.deepToString(zeroMatrix(temp)));
+        //System.out.println(isRotation("-waterbottle", "erbottl-ewat"));
     }
 }
