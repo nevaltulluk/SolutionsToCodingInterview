@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.LinkedList;
 
 public class ArraysAndStrings {
     // null string as input assumed true
@@ -187,6 +188,37 @@ public class ArraysAndStrings {
         String control = S1+S1;
         return control.contains(S2);
     }
+
+    public static int numberOfArithmeticSlices(int[] A) {
+        int[] differences = new int[A.length-1];
+        for (int i = 0 ; i < A.length -1 ; i++){
+            differences[i] = A[i+1]-A[i];
+        }
+        LinkedList<Integer> freq = new LinkedList<>();
+        int current = differences[0];
+        int counter = 1;
+        for(int i = 1; i < differences.length ; i++){
+            if(current == differences[i]) counter++;
+            else {
+                current=differences[i];
+                if (counter >= 2){
+                    freq.push(counter);
+                    counter = 1;
+                }
+                else{
+                    counter = 1;
+                }
+            }
+        }
+        if (counter >= 2){
+            freq.push(counter);
+            counter = 0;
+        }
+        System.out.println(freq);
+        return 0;
+    }
+
+
     public static void main(String[] args) {
         //System.out.println(isUnique("hello world"));
         //System.out.println(checkPermutation("h ell o ", "el l ho "));
@@ -200,5 +232,7 @@ public class ArraysAndStrings {
         //int[][] temp =  {{1,2,3},{4,0,6},{7,8,9}};
         //System.out.println(Arrays.deepToString(zeroMatrix(temp)));
         //System.out.println(isRotation("-waterbottle", "erbottl-ewat"));
+        int[] arr = {1,2,3,4};
+        //numberOfArithmeticSlices(arr);
     }
 }
