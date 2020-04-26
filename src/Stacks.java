@@ -10,8 +10,7 @@ public class Stacks {
         for (int i = 0; i < 5; i++) {
             System.out.println(myset.pop());
         }
-        */
-        /*
+
         MyQueue<String> queue = new MyQueue<>();
         queue.add("hello");
         queue.add("world");
@@ -21,7 +20,7 @@ public class Stacks {
             System.out.println(queue.peek());
             queue.remove();
         }
-        */
+
         SortedStack stack = new SortedStack();
         stack.push(10);
         stack.push(1);
@@ -30,8 +29,18 @@ public class Stacks {
         stack.push(20);
         for (int i = 0; i < 6; i++) {
             System.out.println(stack.pop());
-
         }
-
+        AnimalShelter shelter = new AnimalShelter();
+        shelter.dequeue();
+        shelter.enqueue("cat");
+        shelter.enqueue("cat");
+        shelter.enqueue("cat");
+        shelter.enqueue("cat");
+        shelter.enqueue("dog");
+        shelter.dequeue();
+        shelter.dequeue();
+        shelter.dequeueDog();
+        shelter.dequeueDog();
+        */
     }
 }
